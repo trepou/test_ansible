@@ -1,1 +1,21 @@
-
+---
+- hosts: 127.0.0.1  
+  tasks:
+    - name: Install pip
+      apt: name=python-pip state=present
+      
+    - name: install docker-py package
+      pip: name=docker-py
+      
+    - name: Build Docker image from Dockerfile
+      docker_image:
+        name: test_docker_image
+        path: docker
+        state: build
+        
+    - name: Running the container
+      docker_container:
+        name: test_docker_container
+        image: test_docker_image:latest
+        path: docker
+        state: running
