@@ -23,4 +23,5 @@
       docker_image:
         name: test_docker_image
         path: docker
-        state: build
+        state: present
+        force: yes
