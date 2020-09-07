@@ -16,7 +16,7 @@
 
     - name: Copy jar file
       copy:
-        src: /var/lib/docker/volumes/jenkins-data/_data/workspace/pipeline_maven/target/*.jar
+        src: /var/lib/docker/volumes/jenkins-data/_data/workspace/pipeline_maven/target/my-app-1.0-SNAPSHOT.jar
         dest: docker/app.jar
         
     - name: Build Docker image from Dockerfile
