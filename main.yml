@@ -3,7 +3,6 @@
 
   vars:
     packages:
-      - docker.io
       - python3      
       - python3-pip
     ansible_python_interpreter: /usr/bin/python3
@@ -14,7 +13,12 @@
       
     - name: install docker-py package
       pip: name=docker
-      
+
+    - name: Copy jar file
+      copy:
+        src: /var/lib/docker/volumes/jenkins-data/_data/workspace/pipeline_maven/target/*.jar
+        dest: docker/app.jar
+        
     - name: Build Docker image from Dockerfile
       docker_image:
         name: test_docker_image
