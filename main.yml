@@ -1,8 +1,14 @@
 ---
-- hosts: 127.0.0.1  
+- hosts: 127.0.0.1
+
+  var:
+    packages:
+      - python
+      - python3
+      
   tasks:
     - name: Install pip
-      apt: name=python3-pip state=present
+      apt: name={{ packages }} state=present
       
     - name: install docker-py package
       pip: name=docker-py
