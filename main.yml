@@ -19,3 +19,6 @@
         image: test_docker_image:latest
         path: docker
         state: running
+        
+    - name: Check if container is running
+      shell: docker ps
