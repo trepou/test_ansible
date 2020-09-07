@@ -3,15 +3,17 @@
 
   vars:
     packages:
-      - python
-      - python3
-      
+      - docker.io
+      - python3      
+      - python3-pip
+    ansible_python_interpreter: /usr/bin/python3
+    
   tasks:
-    - name: Install pip
+    - name: Install packages
       apt: name={{ packages }} state=present
       
     - name: install docker-py package
-      pip: name=docker-py
+      pip: name=docker
       
     - name: Build Docker image from Dockerfile
       docker_image:
